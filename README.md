@@ -1,4 +1,4 @@
-# GitCli
+# GitCliShell
 
 Navigate github using the terminal emulator
 
