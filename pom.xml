@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.francescodisales</groupId>
-	<artifactId>githubterminal</artifactId>
+	<artifactId>gitCliShell</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>githubterminal</name>
 	<description>Demo project for Spring Boot</description>
