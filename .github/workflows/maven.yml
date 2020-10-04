@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
          name: gitCliShell
-         path: gitCliShell-0.1.jar
+         path: ./target/gitCliShell-0.1.jar
