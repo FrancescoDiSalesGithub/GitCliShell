@@ -130,7 +130,8 @@ public class GitService
         for(Element element : elements)
         {
             if(conditionChecker.ConditionParserInfoA(element) && conditionChecker.ConditionParserInfoB(element))
-                info.add(element.attr("href"));
+                if(element.attr("href").contains("/blob/") || element.attr("href").contains("/tree/"))
+                    info.add(element.attr("href"));
 
         }
 

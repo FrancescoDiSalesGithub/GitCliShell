@@ -14,7 +14,15 @@ public class ConditionChecker
 
     public  boolean ConditionParserInfoB(Element element)
     {
-        if(!element.attr("href").contains("mailto") && !element.attr("href").contains("#") && element.attr("href").contains("/tree/"))
+        if(!element.attr("href").contains("mailto") && !element.attr("href").contains("#"))
+            return true;
+
+        return false;
+    }
+
+    public boolean ConditionParserInfoC(Element element)
+    {
+        if(element.attr("href").contains("/blob/"))
             return true;
 
         return false;
