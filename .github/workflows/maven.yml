@@ -22,7 +22,6 @@ jobs:
         java-version: 14
     - name: Build with maven 
     - run: mvn -B package --file pom.xml
-    - name: Uploading jar
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v2
       with:
