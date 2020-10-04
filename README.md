@@ -12,7 +12,7 @@ GitCli has the following commands:
  - info: gets info of the folders inside a git repository
  - query: searchs for a git repository given a specific term to search and a number of page
  
- Above you can see some examples on how to use these commands.
+ Below you can see some examples on how to use these commands.
  
  **clone**
  
