@@ -29,7 +29,7 @@ GitCli has the following commands:
   **get-pages:**
  
  ``` 
- get-pages https://github.com/FrancescoDiSalesDEV/GitCli 
+ get-pages postgresql
  
  ```
  
