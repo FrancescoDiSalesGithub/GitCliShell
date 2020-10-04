@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/setup-java@v1
+      with:
+        java-version: 14  
     - run: mvn -B package --file pom.xml
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v2
