@@ -2,8 +2,21 @@
 
 Navigate github using the terminal emulator
 
+## How to build
+execute this command in your terminal:
+ ``` 
+mvn package -Dmaven.test.skip=true
+ 
+ ```
+after that the jar file should be in the target folder.
 
-## How to use
+## How to use it
+
+launch the jar by doing:
+ ``` 
+java -jar githubterminal-0.0.1-SNAPSHOT.jar 
+ 
+ ```
 
 GitCli has the following commands:
  - clone: clones a git repository given an http URL and a local directory
