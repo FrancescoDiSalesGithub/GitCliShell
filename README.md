@@ -10,7 +10,7 @@ GitCli has the following commands:
  - clone-branch: same as clone but needs also a branch from the git-repository 
  - get-pages: shows the max page in the research
  - info: gets info of the folders inside a git repository
- - query: searchs for a git repository given a specific term to search and a number of page
+ - query: searchs for a git repository given a specific term to search and a number of page (example 1=first page, 2=second page and so on...)
  
  Below you can see some examples on how to use these commands.
  
@@ -26,24 +26,24 @@ GitCli has the following commands:
  clone-branch https://github.com/FrancescoDiSalesDEV/GitCli /home/myuser/newgitcli branchxyz 
  
  ```
-  **get-pages:**
+  **get-pages**
  
  ``` 
  get-pages postgresql
  
  ```
  
-  **info:**
+  **info**
  
  ``` 
  info https://github.com/FrancescoDiSalesDEV/GitCli 
  
  ```
  
-  **query:**
+  **query**
  
  ``` 
-query postgresql
+query postgresql 1
  
  ```
  
