@@ -63,6 +63,6 @@ query postgresql
  This command shows the second page (actually each integer is a specific page you want to see)
  
  ``` 
-query postgresql 
+query postgresql 2
  
  ```
