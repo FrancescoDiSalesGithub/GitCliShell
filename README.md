@@ -54,9 +54,15 @@ GitCli has the following commands:
  ```
  
   **query**
- 
+  
+ This command shows only the first page
  ``` 
-query postgresql 1
+query postgresql 
  
  ```
+ This command shows the second page (actually each integer is a specific page you want to see)
  
+ ``` 
+query postgresql 
+ 
+ ```
