@@ -24,7 +24,7 @@ public class GitService
 
         String URL;
 
-        if(page <0)
+        if(page <0 || page == 0)
             return  null;
 
         if(page == 1)
