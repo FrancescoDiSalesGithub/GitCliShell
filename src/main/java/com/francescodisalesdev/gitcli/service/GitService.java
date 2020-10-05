@@ -75,7 +75,7 @@ public class GitService
 
     }
 
-    public void filterPage(List<String> response)
+    public void filterPage(String param,List<String> response) throws IOException
     {
 
         Iterator responseIterator = response.iterator();
@@ -84,6 +84,9 @@ public class GitService
         {
             System.out.println(responseIterator.next());
         }
+
+        System.out.println("total pages for this search:");
+        this.getPages(param);
 
     }
 
