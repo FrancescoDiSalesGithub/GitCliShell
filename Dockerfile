@@ -1,4 +1,4 @@
 FROM openjdk
-COPY gitcli.jar /usr/app
+COPY gitCliShell.jar /usr/app/
 WORKDIR /usr/app
-ENTRYPOINT ["java","-jar","gitcli.jar"]
+ENTRYPOINT ["java","-jar","gitCliShell.jar"]
