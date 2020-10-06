@@ -1,6 +1,8 @@
 package com.francescodisalesdev.gitcli;
 
+import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 import org.json.simple.parser.ParseException;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import com.francescodisalesdev.gitcli.service.GitService;
@@ -31,8 +33,8 @@ class GitCli
             }
             catch(IOException | ParseException e)
             {
-                System.out.println("something bad happened while processing the request");
-                e.printStackTrace();
+                System.out.println(ErrorMessages.SOMETHING_BAD);
+                System.out.println(e.getMessage());
             }
 
     }
@@ -48,7 +50,8 @@ class GitCli
         }
         catch(IOException e)
         {
-            System.out.println("something bad happened while processing the request");
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -63,7 +66,8 @@ class GitCli
         }
         catch(IOException | InterruptedException e)
         {
-            System.out.println("something bad happened");
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
         }
 
     }
@@ -79,7 +83,8 @@ class GitCli
         }
         catch(InterruptedException | IOException e)
         {
-            System.out.println("Something bad happened");
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
         }
 
     }
@@ -95,7 +100,41 @@ class GitCli
         }
         catch (IOException e)
         {
-            System.out.println("Something bad happened");
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    @ShellMethod("go to a specific folder")
+    public void navigate(String path)
+    {
+        GitService gitService = new GitService();
+
+        try
+        {
+            gitService.navigateService(path);
+        }
+        catch (IOException e)
+        {
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
+        }
+
+    }
+    @ShellMethod("check a file")
+    public void checkFile(String path)
+    {
+        GitService gitService = new GitService();
+
+        try
+        {
+            gitService.checkFileService(path);
+        }
+        catch(IOException e)
+        {
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
         }
 
     }
