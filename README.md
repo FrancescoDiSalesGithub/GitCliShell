@@ -14,7 +14,7 @@ after that the jar file should be in the target folder.
 
 launch the jar by doing:
  ``` 
-java -jar githubterminal-0.0.1-SNAPSHOT.jar 
+java -jar gitCliShell-0.2.1.jar
  
  ```
 
