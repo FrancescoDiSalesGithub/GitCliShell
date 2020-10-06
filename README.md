@@ -24,6 +24,8 @@ GitCli has the following commands:
  - get-pages: shows the max page in the research
  - info: gets info of the folders inside a git repository
  - query: searchs for a git repository given a specific term to search and a number of page (example 1=first page, 2=second page and so on...)
+ - navigate: checks a path in the repository
+ - check-file: shows the content of a file in the repository
  
  Below you can see some examples on how to use these commands.
  
@@ -64,5 +66,21 @@ query postgresql
  
  ``` 
 query postgresql 2
+ 
+ ```
+  
+  **navigate**
+  
+  Supposing you have already checked the main page of the repository with the info command and you want to check a folder
+   
+   ``` 
+navigate FrancescoDiSalesDEV/GitCliShell/tree/master/.github
+ 
+ ```
+ 
+ **check-file**
+ 
+``` 
+check-file /FrancescoDiSalesDEV/GitCliShell/blob/master/LICENSE
  
  ```
