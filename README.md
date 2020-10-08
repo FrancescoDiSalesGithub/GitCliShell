@@ -23,7 +23,8 @@ GitCli has the following commands:
  - clone-branch: same as clone but needs also a branch from the git-repository 
  - get-pages: shows the max page in the research
  - info: gets info of the folders inside a git repository
- - query: searchs for a git repository given a specific term to search and a number of page (example 1=first page, 2=second page and so on...)
+ - search-repository: searchs for a git repository given a specific term to search and a number of page (example 1=first page, 2=second page and so on...)
+ - search-user: search for a specific user
  - navigate: checks a path in the repository
  - check-file: shows the content of a file in the repository
  
@@ -55,17 +56,31 @@ GitCli has the following commands:
  
  ```
  
-  **query**
+  **search-repository**
   
  This command shows only the first page
  ``` 
-query postgresql 
+search-repository postgresql 
  
  ```
  This command shows the second page (actually each integer is a specific page you want to see)
  
  ``` 
-query postgresql 2
+search-repository postgresql 2
+ 
+ ```
+
+**search-user**
+  
+ This command shows only the first page
+ ``` 
+search-user johndoe
+ 
+ ```
+ This command shows the second page (actually each integer is a specific page you want to see)
+ 
+ ``` 
+search-user johndoe 2
  
  ```
   
