@@ -67,30 +67,17 @@ public class GitService
        return repo;
     }
 
-    public void getPages(String param) throws IOException
+    public int getPages(String param) throws IOException
     {
         String URL = "https://github.com/search?q="+param;
         Document document = Jsoup.connect(URL).get();
         Elements elementsLinks = document.select("em");
 
-        System.out.println(elementsLinks.attr("data-total-pages").toString());
+        int pagesValue = Integer.parseInt(elementsLinks.attr("data-total-pages").toString());
+        return pagesValue;
 
     }
 
-    public void filterPage(String param,List<String> response) throws IOException
-    {
-
-        Iterator responseIterator = response.iterator();
-
-        while(responseIterator.hasNext())
-        {
-            System.out.println(responseIterator.next());
-        }
-
-        System.out.println(SystemMessages.TOTAL_PAGES.toString());
-        this.getPages(param);
-
-    }
 
     public void cloneRepository(String repository,String localPath) throws IOException, InterruptedException
     {
@@ -199,5 +186,67 @@ public class GitService
             System.out.println(ErrorMessages.INVALID_PATH);
         }
     }
+
+    public Set<String> searchUserService(String username,int page) throws IOException,ParseException
+    {
+
+        Set<String> users = new HashSet<String>();
+
+        String URL;
+
+        if(username.isEmpty())
+            return null;
+
+        if(page == 0 || page < 1)
+            return null;
+
+        if(page == 1)
+            URL = "https://github.com/search?q="+username+"&type=users";
+        else
+            URL = "https://github.com/search?p="+page+"&q="+username+"&type=Users";
+
+        Document document = Jsoup.connect(URL).get();
+        Elements elements = document.select("a");
+
+        for(Element element : elements)
+        {
+            String repositoryJSON = element.attr("data-hydro-click").toString();
+            JSONParser jsonParser = new JSONParser();
+
+            if(!repositoryJSON.isBlank())
+            {
+                JSONObject jsonObject = (JSONObject) jsonParser.parse(repositoryJSON);
+
+                String payload = jsonObject.get("payload").toString();
+                JSONObject result = (JSONObject) jsonParser.parse(payload);
+
+                if(result.containsKey("result"))
+                {
+                    String resultString = result.get("result").toString();
+                    JSONObject three = (JSONObject) jsonParser.parse(resultString);
+
+                    String urlString = three.get("url").toString();
+                    users.add(urlString);
+                }
+
+            }
+
+        }
+
+        return users;
+    }
+
+    public int getUserPages(String username) throws IOException
+    {
+        String URL = URL = "https://github.com/search?q="+username+"&type=users";
+
+        Document document = Jsoup.connect(URL).get();
+        Elements elementsLinks = document.select("em");
+
+        int value = Integer.parseInt(elementsLinks.attr("data-total-pages").toString());
+        return value;
+
+    }
+
 
 }

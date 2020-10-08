@@ -1,6 +1,7 @@
 package com.francescodisalesdev.gitcli;
 
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
+import com.francescodisalesdev.gitcli.utility.SystemMessages;
 import org.json.simple.parser.ParseException;
 import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.shell.standard.ShellComponent;
@@ -9,7 +10,9 @@ import com.francescodisalesdev.gitcli.service.GitService;
 import org.springframework.shell.standard.ShellOption;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 
 @ShellComponent
@@ -17,7 +20,7 @@ class GitCli
 {
 
     @ShellMethod("search for a git repository")
-    public void query(String repository,@ShellOption(defaultValue = "1") int page)
+    public void searchRepository(String repository,@ShellOption(defaultValue = "1") int page)
     {
             try
             {
@@ -28,7 +31,21 @@ class GitCli
                 if(result==null)
                     System.out.println("page number must be bigger than 0");
                 else
-                    gitService.filterPage(repository,result);
+                {
+                    Iterator responseIterator = result.iterator();
+
+                    while(responseIterator.hasNext())
+                    {
+                        System.out.println(responseIterator.next());
+                    }
+
+                    int pagesRepository = gitService.getPages(repository);
+
+                    if(pagesRepository>1)
+                        System.out.println(SystemMessages.TOTAL_PAGES.toString()+pagesRepository);
+
+                }
+
 
             }
             catch(IOException | ParseException e)
@@ -97,6 +114,7 @@ class GitCli
         try
         {
             gitService.getInfoRepository(repository);
+
         }
         catch (IOException e)
         {
@@ -139,5 +157,36 @@ class GitCli
 
     }
 
+    @ShellMethod("search for a specific user")
+    public void searchUser(String username,@ShellOption(defaultValue = "1") int page)
+    {
+        GitService gitService = new GitService();
+
+        try
+        {
+            Set<String> usersResult = gitService.searchUserService(username,page);
+
+            if(usersResult == null)
+                System.out.println(ErrorMessages.USER_NOT_FOUND);
+            else
+            {
+                Iterator iterator = usersResult.iterator();
+
+                while(iterator.hasNext())
+                    System.out.println(iterator.next());
+            }
+
+            int pages = gitService.getUserPages(username);
+            if(pages > 1)
+                System.out.println("total pages "+pages);
+
+        }
+        catch (IOException | ParseException e)
+        {
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
+        }
+
+    }
 
 }

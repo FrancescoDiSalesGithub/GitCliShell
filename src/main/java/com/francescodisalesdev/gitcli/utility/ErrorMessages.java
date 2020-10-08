@@ -24,5 +24,12 @@ public enum ErrorMessages
                 }
 
 
+            },
+    USER_NOT_FOUND
+            {
+                @Override
+                public String toString() {
+                    return "User not found";
+                }
             }
 }
