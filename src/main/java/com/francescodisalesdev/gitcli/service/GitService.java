@@ -197,7 +197,7 @@ public class GitService
         if(username.isEmpty())
             return null;
 
-        if(page == 0 || page < 1)
+        if(page == 0 || page < 0)
             return null;
 
         if(page == 1)
@@ -245,6 +245,11 @@ public class GitService
 
         int value = Integer.parseInt(elementsLinks.attr("data-total-pages").toString());
         return value;
+
+    }
+
+    public void getUserInfo(String user)
+    {
 
     }
 

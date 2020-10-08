@@ -2,14 +2,18 @@ package com.francescodisalesdev.gitcli;
 
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 import com.francescodisalesdev.gitcli.utility.SystemMessages;
+
 import org.json.simple.parser.ParseException;
-import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
+
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
-import com.francescodisalesdev.gitcli.service.GitService;
 import org.springframework.shell.standard.ShellOption;
 
+import com.francescodisalesdev.gitcli.service.GitService;
+
+
 import java.io.IOException;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -167,7 +171,7 @@ class GitCli
             Set<String> usersResult = gitService.searchUserService(username,page);
 
             if(usersResult == null)
-                System.out.println(ErrorMessages.USER_NOT_FOUND);
+                System.out.println(ErrorMessages.USER_NOT_FOUND.toString());
             else
             {
                 Iterator iterator = usersResult.iterator();
@@ -178,7 +182,7 @@ class GitCli
 
             int pages = gitService.getUserPages(username);
             if(pages > 1)
-                System.out.println("total pages "+pages);
+                System.out.println(SystemMessages.TOTAL_PAGES.toString()+pages);
 
         }
         catch (IOException | ParseException e)
@@ -187,6 +191,12 @@ class GitCli
             System.out.println(e.getMessage());
         }
 
+    }
+
+    @ShellMethod("gets information about a user")
+    public void infoUser(String user)
+    {
+        GitService gitService = new GitService();
     }
 
 }
