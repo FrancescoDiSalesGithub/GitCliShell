@@ -22,10 +22,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class GithubterminalApplication {
+public class GitCliShell {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GithubterminalApplication.class, args);
+		SpringApplication.run(GitCliShell.class, args);
 	}
 
 }

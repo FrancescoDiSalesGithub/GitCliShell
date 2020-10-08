@@ -78,22 +78,6 @@ public class GitService
 
     }
 
-
-    public void cloneRepository(String repository,String localPath) throws IOException, InterruptedException
-    {
-        String gitRepository = repository+".git";
-
-        ProcessBuilder processBuilder = new ProcessBuilder("git","clone",gitRepository);
-        processBuilder.directory(new File(localPath));
-        Process process = processBuilder.start();
-
-        System.out.println(SystemMessages.CLONING_PROCESS);
-        process.waitFor();
-
-        System.out.println(SystemMessages.CLONING_DONE);
-
-    }
-
     public void cloneRepositoryBranch(String repository,String localPath,String branch) throws IOException,InterruptedException
     {
         String gitRepository = repository+".git";
