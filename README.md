@@ -20,9 +20,8 @@ java -jar gitCliShell-0.2.1.jar
 
 GitCli has the following commands:
  - clone: clones a git repository given an http URL and a local directory
- - clone-branch: same as clone but needs also a branch from the git-repository 
- - get-pages: shows the max page in the research
- - info: gets info of the folders inside a git repository
+ - info-repository: gets info of the folders inside a git repository
+ - info-user: gets info of a specific user
  - search-repository: searchs for a git repository given a specific term to search and a number of page (example 1=first page, 2=second page and so on...)
  - search-user: search for a specific user
  - navigate: checks a path in the repository
@@ -36,23 +35,17 @@ GitCli has the following commands:
  clone https://github.com/FrancescoDiSalesDEV/GitCli /home/myuser/newgitcli
  
  ```
-  **clone-branch**
+ 
+  **info-repository**
  
  ``` 
- clone-branch https://github.com/FrancescoDiSalesDEV/GitCli /home/myuser/newgitcli branchxyz 
+ info-repository https://github.com/FrancescoDiSalesDEV/GitCli 
  
  ```
-  **get-pages**
+  **info-user**
  
  ``` 
- get-pages postgresql
- 
- ```
- 
-  **info**
- 
- ``` 
- info https://github.com/FrancescoDiSalesDEV/GitCli 
+ info-user FrancescoDiSalesDEV
  
  ```
  
