@@ -55,13 +55,13 @@ public class GitCliShellRepository
 
 
     @ShellMethod("see a list of files in a repository")
-    public void infoRepository(String repository)
+    public void infoRepository(String repository,String username,@ShellOption(defaultValue = "master") String branch)
     {
         GitService gitService = new GitService();
 
         try
         {
-            gitService.getInfoRepository(repository);
+            gitService.getInfoRepository(repository,username,branch);
 
         }
         catch (IOException e)
@@ -71,4 +71,22 @@ public class GitCliShellRepository
         }
 
     }
+
+    @ShellMethod("show all the branches of a repository")
+    public void infoBranch(String repository,String username)
+    {
+        GitService gitService = new GitService();
+
+        try
+        {
+            gitService.getBranchRepository(repository,username);
+
+        }
+        catch (IOException e)
+        {
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

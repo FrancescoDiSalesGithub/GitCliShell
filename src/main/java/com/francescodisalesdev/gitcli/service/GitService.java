@@ -14,7 +14,6 @@ import org.jsoup.Jsoup;
 import org.kohsuke.github.*;
 
 
-import javax.print.Doc;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -84,10 +83,10 @@ public class GitService
     {
         String gitRepository = repository+".git";
 
-        ProcessBuilder processBuilder = new ProcessBuilder("git","clone","-b",branch,gitRepository);
-
         if(localPath.contains("\\"))
             localPath.replace("\\","\\\\");
+
+        ProcessBuilder processBuilder = new ProcessBuilder("git","clone","-b",branch,gitRepository);
 
         processBuilder.directory(new File(localPath));
         Process process = processBuilder.start();
@@ -100,9 +99,18 @@ public class GitService
 
     }
 
-    public void getInfoRepository(String repository) throws IOException
+    public void getInfoRepository(String repository,String username,String branch) throws IOException
     {
-        Document document = Jsoup.connect(repository).get();
+
+        String URL;
+
+        if(branch.equals("master"))
+            URL = "https://github.com/"+username+"/"+repository;
+        else
+            URL = "https://github.com/"+username+"/"+repository+"/tree/"+branch;
+
+        System.out.println(URL);
+        Document document = Jsoup.connect(URL).get();
 
         Elements elements = document.select("a");
         List<String> info = new ArrayList<String>();
@@ -233,8 +241,10 @@ public class GitService
         Document document = Jsoup.connect(URL).get();
         Elements elementsLinks = document.select("em");
 
-        int value = Integer.parseInt(elementsLinks.attr("data-total-pages").toString());
-        return value;
+        if(elementsLinks.attr("data-total-pages").toString().isEmpty())
+            return 0;
+
+        return Integer.parseInt(elementsLinks.attr("data-total-pages").toString());
 
     }
 
@@ -274,6 +284,19 @@ public class GitService
         for(Map.Entry<String, GHRepository> valuesFinal : repository.entrySet())
         {
             System.out.println(valuesFinal.getKey() + " " + valuesFinal.getValue().getHtmlUrl());
+        }
+
+    }
+
+    public void getBranchRepository(String repository,String username) throws IOException
+    {
+        GitHub gitHub = new GitHubBuilder().build();
+        GHUser user = gitHub.getUser(username);
+        Map<String,GHBranch> branches = user.getRepository(repository).getBranches();
+
+        for(Map.Entry<String,GHBranch> branchMap : branches.entrySet())
+        {
+            System.out.println(branchMap.getValue());
         }
 
     }
