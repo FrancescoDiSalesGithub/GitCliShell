@@ -14,7 +14,7 @@ after that the jar file should be in the target folder.
 
 launch the jar by doing:
  ``` 
-java -jar gitCliShell-0.2.1.jar
+java -jar gitCliShell-0.8.7.jar
  
  ```
 
