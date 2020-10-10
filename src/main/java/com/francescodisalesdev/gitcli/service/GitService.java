@@ -113,7 +113,6 @@ public class GitService
         else
             URL = "https://github.com/"+username+"/"+repository+"/tree/"+branch;
 
-        System.out.println(URL);
         Document document = Jsoup.connect(URL).get();
 
         Elements elements = document.select("a");
