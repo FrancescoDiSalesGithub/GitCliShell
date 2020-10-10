@@ -31,5 +31,12 @@ public enum ErrorMessages
                 public String toString() {
                     return "User not found";
                 }
+            },
+    MAIL_NOT_SETTED
+            {
+                @Override
+                public String toString() {
+                    return "Mail not setted";
+                }
             }
 }

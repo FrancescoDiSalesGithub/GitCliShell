@@ -11,8 +11,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.jsoup.Jsoup;
+import org.kohsuke.github.*;
 
 
+import javax.print.Doc;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -232,8 +234,39 @@ public class GitService
 
     }
 
-    public void getUserInfo(String user)
+    public void getUserInfo(String username) throws IOException
     {
+
+        GitHub gitHub = new GitHubBuilder().build();
+        GHUser user = gitHub.getUser(username);
+        String email = user.getEmail();
+
+        if(email == null)
+            email = ErrorMessages.MAIL_NOT_SETTED.toString();
+
+        System.out.println("username: "+username);
+        System.out.println("email: "+email );
+
+        System.out.print("followers: ");
+
+        GHPersonSet<GHUser> followers = user.getFollowers();
+        for(GHUser myuser : followers)
+        {
+            System.out.print(myuser.getLogin() + " ");
+        }
+
+        System.out.print("\nfollowing: ");
+        GHPersonSet<GHUser> follows = user.getFollows();
+
+        for(GHUser myuser : follows)
+        {
+            System.out.print(myuser.getLogin()+" ");
+        }
+
+        System.out.print("\nrepository: ");
+        Map<String,GHRepository> repository = user.getRepositories();
+        System.out.println(repository.keySet());
+
 
     }
 
