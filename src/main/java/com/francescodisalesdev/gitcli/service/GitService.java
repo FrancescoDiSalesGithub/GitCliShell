@@ -85,6 +85,10 @@ public class GitService
         String gitRepository = repository+".git";
 
         ProcessBuilder processBuilder = new ProcessBuilder("git","clone","-b",branch,gitRepository);
+
+        if(localPath.contains("\\"))
+            localPath.replace("\\","\\\\");
+
         processBuilder.directory(new File(localPath));
         Process process = processBuilder.start();
 
@@ -267,6 +271,10 @@ public class GitService
         Map<String,GHRepository> repository = user.getRepositories();
         System.out.println(repository.keySet());
 
+        for(Map.Entry<String, GHRepository> valuesFinal : repository.entrySet())
+        {
+            System.out.println(valuesFinal.getKey() + " " + valuesFinal.getValue().getHtmlUrl());
+        }
 
     }
 

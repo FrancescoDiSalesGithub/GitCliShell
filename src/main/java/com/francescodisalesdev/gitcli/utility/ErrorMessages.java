@@ -36,7 +36,7 @@ public enum ErrorMessages
             {
                 @Override
                 public String toString() {
-                    return "Mail not setted";
+                    return "Mail not set";
                 }
             }
 }
