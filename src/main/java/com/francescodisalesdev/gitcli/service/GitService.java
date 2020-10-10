@@ -246,7 +246,7 @@ public class GitService
         String email = user.getEmail();
 
         if(email == null)
-            email = ErrorMessages.MAIL_NOT_SETTED.toString();
+            email = ErrorMessages.MAIL_NOT_SET.toString();
 
         System.out.println("username: "+username);
         System.out.println("email: "+email );

@@ -32,7 +32,7 @@ public enum ErrorMessages
                     return "User not found";
                 }
             },
-    MAIL_NOT_SETTED
+    MAIL_NOT_SET
             {
                 @Override
                 public String toString() {
