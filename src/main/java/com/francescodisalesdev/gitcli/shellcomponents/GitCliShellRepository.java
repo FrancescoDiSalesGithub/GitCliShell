@@ -3,7 +3,9 @@ package com.francescodisalesdev.gitcli.shellcomponents;
 import com.francescodisalesdev.gitcli.service.GitService;
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 import com.francescodisalesdev.gitcli.utility.SystemMessages;
+
 import org.json.simple.parser.ParseException;
+
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;

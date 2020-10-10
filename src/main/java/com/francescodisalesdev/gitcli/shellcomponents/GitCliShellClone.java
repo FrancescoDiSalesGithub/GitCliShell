@@ -13,7 +13,7 @@ public class GitCliShellClone
 {
 
     @ShellMethod("clone the repository given an url")
-    public void clone(String repository, String localPath, @ShellOption(value = "master")String branch)
+    public void clone(String repository, String localPath, @ShellOption(defaultValue = "master")String branch)
     {
         GitService gitService = new GitService();
 
