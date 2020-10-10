@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.francescodisales</groupId>
 	<artifactId>gitCliShell</artifactId>
-	<version>0.4.2</version>
+	<version>0.7.3</version>
 	<name>gitCliShell</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Cli interface that navigates in github</description>
 
 	<properties>
 		<java.version>14</java.version>
