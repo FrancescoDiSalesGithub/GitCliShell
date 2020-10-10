@@ -73,8 +73,12 @@ public class GitService
         String URL = "https://github.com/search?q="+param;
         Document document = Jsoup.connect(URL).get();
         Elements elementsLinks = document.select("em");
+        String pages = elementsLinks.attr("data-total-pages").toString();
 
-        int pagesValue = Integer.parseInt(elementsLinks.attr("data-total-pages").toString());
+        if(pages.isEmpty())
+            return 0;
+
+        int pagesValue = Integer.parseInt(pages);
         return pagesValue;
 
     }
