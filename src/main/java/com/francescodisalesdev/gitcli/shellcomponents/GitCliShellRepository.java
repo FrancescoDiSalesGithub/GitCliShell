@@ -1,7 +1,6 @@
 package com.francescodisalesdev.gitcli.shellcomponents;
 
 import com.francescodisalesdev.gitcli.service.GitRepositoryService;
-import com.francescodisalesdev.gitcli.service.GitService;
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 import com.francescodisalesdev.gitcli.utility.SystemMessages;
 
