@@ -1,6 +1,7 @@
 package com.francescodisalesdev.gitcli.shellcomponents;
 
 import com.francescodisalesdev.gitcli.service.GitService;
+import com.francescodisalesdev.gitcli.service.GitUserService;
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 import com.francescodisalesdev.gitcli.utility.SystemMessages;
 
@@ -20,11 +21,11 @@ public class GitCliShellUser
     @ShellMethod("search for a specific user")
     public void searchUser(String username,@ShellOption(defaultValue = "1") int page)
     {
-        GitService gitService = new GitService();
+        GitUserService gitUserService = new GitUserService();
 
         try
         {
-            Set<String> usersResult = gitService.searchUserService(username,page);
+            Set<String> usersResult = gitUserService.searchUserService(username,page);
 
             if(usersResult == null)
                 System.out.println(ErrorMessages.USER_NOT_FOUND.toString());
@@ -36,7 +37,7 @@ public class GitCliShellUser
                     System.out.println(iterator.next());
             }
 
-            int pages = gitService.getUserPages(username);
+            int pages = gitUserService.getUserPages(username);
             if(pages > 1)
                 System.out.println(SystemMessages.TOTAL_PAGES.toString()+pages);
 
@@ -52,12 +53,12 @@ public class GitCliShellUser
     @ShellMethod("gets information about a user")
     public void infoUser(String user)
     {
-        GitService gitService = new GitService();
+        GitUserService gitUserService = new GitUserService();
 
         try
         {
             if(!user.isEmpty())
-                gitService.getUserInfo(user);
+                gitUserService.getUserInfo(user);
             else
                 System.out.println(ErrorMessages.USER_NOT_FOUND.toString());
         }

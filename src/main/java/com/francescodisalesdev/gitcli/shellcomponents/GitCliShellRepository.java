@@ -1,5 +1,6 @@
 package com.francescodisalesdev.gitcli.shellcomponents;
 
+import com.francescodisalesdev.gitcli.service.GitRepositoryService;
 import com.francescodisalesdev.gitcli.service.GitService;
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 import com.francescodisalesdev.gitcli.utility.SystemMessages;
@@ -24,8 +25,9 @@ public class GitCliShellRepository
         try
         {
 
-            GitService gitService = new GitService();
-            List<String> result = gitService.getResult(repository,page);
+            GitRepositoryService gitRepositoryService = new GitRepositoryService();
+
+            List<String> result = gitRepositoryService.getResult(repository,page);
 
             if(result==null)
                 System.out.println("page number must be bigger than 0");
@@ -38,7 +40,7 @@ public class GitCliShellRepository
                     System.out.println(responseIterator.next());
                 }
 
-                int pagesRepository = gitService.getPages(repository);
+                int pagesRepository = gitRepositoryService.getPages(repository);
 
                 if(pagesRepository>1)
                     System.out.println(SystemMessages.TOTAL_PAGES.toString()+pagesRepository);
@@ -59,11 +61,11 @@ public class GitCliShellRepository
     @ShellMethod("see a list of files in a repository")
     public void infoRepository(String repository,String username,@ShellOption(defaultValue = "master") String branch)
     {
-        GitService gitService = new GitService();
+        GitRepositoryService gitRepositoryService = new GitRepositoryService();
 
         try
         {
-            gitService.getInfoRepository(repository,username,branch);
+            gitRepositoryService.getInfoRepository(repository,username,branch);
 
         }
         catch (IOException e)
@@ -77,12 +79,11 @@ public class GitCliShellRepository
     @ShellMethod("show all the branches of a repository")
     public void infoBranch(String repository,String username)
     {
-        GitService gitService = new GitService();
+          GitRepositoryService gitRepositoryService = new GitRepositoryService();
 
         try
         {
-            gitService.getBranchRepository(repository,username);
-
+            gitRepositoryService.getBranchRepository(repository,username);
         }
         catch (IOException e)
         {

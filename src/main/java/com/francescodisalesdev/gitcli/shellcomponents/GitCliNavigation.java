@@ -1,6 +1,6 @@
 package com.francescodisalesdev.gitcli.shellcomponents;
 
-import com.francescodisalesdev.gitcli.service.GitService;
+import com.francescodisalesdev.gitcli.service.GitNavigationService;
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 
 import org.springframework.shell.standard.ShellComponent;
@@ -15,11 +15,11 @@ public class GitCliNavigation
     @ShellMethod("check a file")
     public void checkFile(String path)
     {
-        GitService gitService = new GitService();
+        GitNavigationService gitNavigationService = new GitNavigationService();
 
         try
         {
-            gitService.checkFileService(path);
+            gitNavigationService.checkFileService(path);
         }
         catch(IOException e)
         {
@@ -32,11 +32,11 @@ public class GitCliNavigation
     @ShellMethod("go to a specific folder")
     public void navigate(String path)
     {
-        GitService gitService = new GitService();
+        GitNavigationService gitNavigationService = new GitNavigationService();
 
         try
         {
-            gitService.navigateService(path);
+           gitNavigationService.navigateService(path);
         }
         catch (IOException e)
         {

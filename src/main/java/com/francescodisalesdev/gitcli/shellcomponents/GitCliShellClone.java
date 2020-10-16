@@ -1,7 +1,8 @@
 package com.francescodisalesdev.gitcli.shellcomponents;
 
-import com.francescodisalesdev.gitcli.service.GitService;
+import com.francescodisalesdev.gitcli.service.GitCloneService;
 import com.francescodisalesdev.gitcli.utility.ErrorMessages;
+
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
@@ -15,11 +16,11 @@ public class GitCliShellClone
     @ShellMethod("clone the repository given an url")
     public void clone(String repository, String localPath, @ShellOption(defaultValue = "master")String branch)
     {
-        GitService gitService = new GitService();
+        GitCloneService gitCloneService = new GitCloneService();
 
         try
         {
-            gitService.cloneRepositoryBranch(repository,localPath,branch);
+            gitCloneService.cloneRepositoryBranch(repository,localPath,branch);
         }
         catch(IOException | InterruptedException e)
         {
