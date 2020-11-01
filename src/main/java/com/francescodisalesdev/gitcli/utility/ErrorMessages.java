@@ -38,5 +38,12 @@ public enum ErrorMessages
                 public String toString() {
                     return "Mail not set";
                 }
+            },
+    AUTHOR_GIT_NULL
+            {
+                @Override
+                public String toString() {
+                    return "the author does not exist. Please insert an author before assigning a repository";
+                }
             }
 }

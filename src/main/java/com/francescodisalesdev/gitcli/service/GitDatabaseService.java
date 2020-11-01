@@ -1,6 +1,7 @@
 package com.francescodisalesdev.gitcli.service;
 
 import com.francescodisalesdev.gitcli.database.databaseInstance;
+import com.francescodisalesdev.gitcli.utility.ErrorMessages;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,7 +51,9 @@ public class GitDatabaseService
         selectAuthorStatement.setString(1,author);
         ResultSet authorFind = selectAuthorStatement.executeQuery();
 
-        if (authorFind.getFetchSize() > 0)
+        if (authorFind.getFetchSize() < 0)
+            System.out.println(ErrorMessages.AUTHOR_GIT_NULL);
+        else
         while(authorFind.next())
         {
             String queryInsert = "insert into repository(author_id,repository_id,name) values(?,?,?);";
