@@ -50,6 +50,7 @@ public class GitDatabaseService
         selectAuthorStatement.setString(1,author);
         ResultSet authorFind = selectAuthorStatement.executeQuery();
 
+        if (authorFind.getFetchSize() > 0)
         while(authorFind.next())
         {
             String queryInsert = "insert into repository(author_id,repository_id,name) values(?,?,?);";
