@@ -23,6 +23,7 @@ public class GitCliDatabaseLocal
         catch (SQLException e)
         {
             System.out.println(ErrorMessages.SOMETHING_BAD.toString());
+            e.printStackTrace();
         }
     }
 
@@ -72,7 +73,7 @@ public class GitCliDatabaseLocal
         catch (SQLException e)
         {
             System.out.println(ErrorMessages.SOMETHING_BAD);
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

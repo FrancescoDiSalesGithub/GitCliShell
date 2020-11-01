@@ -1,6 +1,9 @@
 package com.francescodisalesdev.gitcli.design.pattern.singleton;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public final class databaseSingleton
 {
@@ -35,54 +38,7 @@ public final class databaseSingleton
         statement.execute(query);
     }
 
-    public void insertStatement(String query) throws SQLException
-    {
-        Statement statement = con.createStatement();
-        statement.execute(query);
-    }
 
-
-    public void updateStament(String query) throws SQLException
-    {
-        Statement statement = con.createStatement();
-        statement.execute(query);
-    }
-
-    public void deleteStatement(String query) throws SQLException
-    {
-        Statement statement = con.createStatement();
-        statement.execute(query);
-    }
-
-    public String searchStatementAuthor(String query) throws SQLException
-    {
-        Statement statement = con.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        int value=0;
-
-        while(resultSet.next())
-            value = resultSet.getInt("id");
-
-        return String.valueOf(value);
-    }
-
-    public void searchAuthorRepository(String query) throws SQLException
-    {
-        Statement statement = con.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        int value=0;
-
-        while(resultSet.next())
-        {
-
-        }
-
-    }
-
-    public void closeConnection() throws SQLException
-    {
-        con.close();
-    }
 
 
 }
