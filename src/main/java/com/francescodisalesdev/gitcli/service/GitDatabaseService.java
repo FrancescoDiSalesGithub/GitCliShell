@@ -105,16 +105,14 @@ public class GitDatabaseService
         String url = "jdbc:sqlite:"+path;
         databaseInstance databaseInstance= new databaseInstance(url);
 
-        String queryJoinRepository = "Select r.name,r.repository_id from author a,repository r where a.author_id=r.author_id and a.username=? ";
+        String queryJoinRepository = "Select r.repository_id from author a,repository r where a.author_id=r.author_id and a.username=? ";
         PreparedStatement repositoryAuthorStatement = databaseInstance.getConnection().prepareStatement(queryJoinRepository);
         repositoryAuthorStatement.setString(1,author);
 
         ResultSet resultSetJOIN = repositoryAuthorStatement.executeQuery();
 
         while(resultSetJOIN.next())
-        {
-            System.out.println(resultSetJOIN.getString(1)+" "+resultSetJOIN.getString(2));
-        }
+          System.out.println(resultSetJOIN.getString(1));
 
         databaseInstance.getConnection().close();
 
