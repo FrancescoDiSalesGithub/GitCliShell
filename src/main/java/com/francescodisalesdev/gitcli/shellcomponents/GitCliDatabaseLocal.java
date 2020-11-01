@@ -81,7 +81,7 @@ public class GitCliDatabaseLocal
         try
         {
             GitDatabaseService gitDatabaseService = new GitDatabaseService();
-            gitDatabaseService.searchAuthor(author, path);
+            gitDatabaseService.searchRepositoryByAuthor(author, path);
         }
         catch (SQLException e)
         {

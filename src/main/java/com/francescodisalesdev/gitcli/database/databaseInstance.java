@@ -1,16 +1,15 @@
-package com.francescodisalesdev.gitcli.design.pattern.singleton;
+package com.francescodisalesdev.gitcli.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public final class databaseSingleton
+public final class databaseInstance
 {
-    private static databaseSingleton singletonInstance;
     private Connection con;
 
-    private databaseSingleton(String url) throws SQLException
+    public databaseInstance(String url) throws SQLException
     {
         con = DriverManager.getConnection(url);
 
@@ -19,13 +18,6 @@ public final class databaseSingleton
 
     }
 
-    public static databaseSingleton getSingletonInstance(String url) throws SQLException
-    {
-        if(singletonInstance == null)
-            singletonInstance = new databaseSingleton(url);
-
-        return singletonInstance;
-    }
 
     public Connection getConnection()
     {
