@@ -65,16 +65,30 @@ public class GitCliDatabaseLocal
     {
         try
         {
-
             GitDatabaseService gitDatabaseService = new GitDatabaseService();
             gitDatabaseService.searchAuthor(author, path);
-
         }
         catch (SQLException e)
         {
             System.out.println(ErrorMessages.SOMETHING_BAD);
             e.printStackTrace();
         }
+    }
+
+    @ShellMethod("gets repository by author")
+    public void searchRepositoryAuthor(String author,String path)
+    {
+        try
+        {
+            GitDatabaseService gitDatabaseService = new GitDatabaseService();
+            gitDatabaseService.searchAuthor(author, path);
+        }
+        catch (SQLException e)
+        {
+            System.out.println(ErrorMessages.SOMETHING_BAD);
+            e.printStackTrace();
+        }
+
     }
 
 }

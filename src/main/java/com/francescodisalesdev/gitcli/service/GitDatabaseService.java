@@ -2,6 +2,7 @@ package com.francescodisalesdev.gitcli.service;
 
 import com.francescodisalesdev.gitcli.design.pattern.singleton.databaseSingleton;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,12 +16,11 @@ public class GitDatabaseService
 
         databaseSingleton singleton = databaseSingleton.getSingletonInstance(url);
 
-        String queryCreation = "create table author( id  INTEGER PRIMARY KEY AUTOINCREMENT, username text);";
+        String queryCreation = "create table author( author_id  INTEGER PRIMARY KEY AUTOINCREMENT, username text);";
         String queryRepositoryCreation = "create table repository( author_id INTEGER,repository_id text,name text, primary key(repository_id),foreign key(author_id) references author(id));";
 
         singleton.createTableStatement(queryCreation);
         singleton.createTableStatement(queryRepositoryCreation);
-
 
     }
 
@@ -34,8 +34,6 @@ public class GitDatabaseService
         PreparedStatement insertAuthorStatement = singleton.getConnection().prepareStatement(queryInsert);
         insertAuthorStatement.setString(1,author);
         insertAuthorStatement.execute();
-
-
 
     }
 
@@ -62,7 +60,6 @@ public class GitDatabaseService
             assignRepositoryStatemtent.execute();
         }
 
-
     }
 
     public void searchAuthor(String author,String path) throws SQLException
@@ -71,21 +68,46 @@ public class GitDatabaseService
 
         databaseSingleton singleton = databaseSingleton.getSingletonInstance(url);
 
-        String selectQuery = "Select username from author where username=?";
+        String selectQuery;
+
+        if(author.equals("*"))
+         selectQuery = "Select * from author;";
+        else
+         selectQuery = "Select username from author where username=?";
 
         PreparedStatement selectAuthorStatement = singleton.getConnection().prepareStatement(selectQuery);
-        selectAuthorStatement.setString(1,author);
+
+        if(!author.equals("*"))
+            selectAuthorStatement.setString(1,author);
+
         ResultSet resultSetAuthor = selectAuthorStatement.executeQuery();
 
         while(resultSetAuthor.next())
         {
-            System.out.println(resultSetAuthor.getString(1));
+            if(author.equals("*"))
+              System.out.println(resultSetAuthor.getString(2));
+            else
+              System.out.println(resultSetAuthor.getString(1));
         }
-
-
-
     }
 
+    public void searchRepositoryByAuthor(String author,String path) throws SQLException
+    {
+        String url = "jdbc:sqlite:"+path;
+        databaseSingleton singleton = databaseSingleton.getSingletonInstance(url);
+
+        String queryJoinRepository = "Select username from author a,repository r where a.author_id=r.author_id and a.username=? ";
+        PreparedStatement repositoryAuthorStatement = singleton.getConnection().prepareStatement(queryJoinRepository);
+        repositoryAuthorStatement.setString(1,author);
+
+        ResultSet resultSetJOIN = repositoryAuthorStatement.executeQuery();
+
+        while(resultSetJOIN.next())
+        {
+            System.out.println(resultSetJOIN.getString(1));
+        }
+
+    }
 
 
 }
