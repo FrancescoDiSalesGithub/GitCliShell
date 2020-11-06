@@ -1,7 +1,7 @@
-package com.francescodisalesdev.gitcli.shellcomponents;
+package com.francescodisalesgithub.gitcli.shellcomponents;
 
-import com.francescodisalesdev.gitcli.service.GitNavigationService;
-import com.francescodisalesdev.gitcli.utility.ErrorMessages;
+import com.francescodisalesgithub.gitcli.service.GitNavigationService;
+import com.francescodisalesgithub.gitcli.utility.ErrorMessages;
 
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;

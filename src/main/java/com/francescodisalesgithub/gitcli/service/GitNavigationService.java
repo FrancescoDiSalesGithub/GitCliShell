@@ -1,6 +1,6 @@
-package com.francescodisalesdev.gitcli.service;
+package com.francescodisalesgithub.gitcli.service;
 
-import com.francescodisalesdev.gitcli.utility.ErrorMessages;
+import com.francescodisalesgithub.gitcli.utility.ErrorMessages;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

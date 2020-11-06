@@ -1,4 +1,4 @@
-package com.francescodisalesdev.gitcli.database;
+package com.francescodisalesgithub.gitcli.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

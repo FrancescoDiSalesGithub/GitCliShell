@@ -1,4 +1,4 @@
-package com.francescodisalesdev.gitcli;
+package com.francescodisalesgithub.gitcli;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

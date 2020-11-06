@@ -1,7 +1,7 @@
-package com.francescodisalesdev.gitcli.service;
+package com.francescodisalesgithub.gitcli.service;
 
-import com.francescodisalesdev.gitcli.database.databaseInstance;
-import com.francescodisalesdev.gitcli.utility.ErrorMessages;
+import com.francescodisalesgithub.gitcli.database.databaseInstance;
+import com.francescodisalesgithub.gitcli.utility.ErrorMessages;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ public class GitDatabaseService
     public void createDatabase(String fileName,String path) throws SQLException
     {
         String url = "jdbc:sqlite:"+path+fileName+".db";
-
+        
         databaseInstance databaseInstance = new databaseInstance(url);
 
         String queryCreation = "create table author( author_id  INTEGER PRIMARY KEY AUTOINCREMENT, username text);";

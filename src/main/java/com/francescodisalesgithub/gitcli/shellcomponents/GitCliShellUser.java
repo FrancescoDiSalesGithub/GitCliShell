@@ -1,8 +1,8 @@
-package com.francescodisalesdev.gitcli.shellcomponents;
+package com.francescodisalesgithub.gitcli.shellcomponents;
 
-import com.francescodisalesdev.gitcli.service.GitUserService;
-import com.francescodisalesdev.gitcli.utility.ErrorMessages;
-import com.francescodisalesdev.gitcli.utility.SystemMessages;
+import com.francescodisalesgithub.gitcli.service.GitUserService;
+import com.francescodisalesgithub.gitcli.utility.ErrorMessages;
+import com.francescodisalesgithub.gitcli.utility.SystemMessages;
 
 import org.json.simple.parser.ParseException;
 

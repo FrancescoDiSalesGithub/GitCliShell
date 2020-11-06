@@ -1,6 +1,6 @@
-package com.francescodisalesdev.gitcli.service;
+package com.francescodisalesgithub.gitcli.service;
 
-import com.francescodisalesdev.gitcli.utility.ErrorMessages;
+import com.francescodisalesgithub.gitcli.utility.ErrorMessages;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

@@ -1,6 +1,6 @@
-package com.francescodisalesdev.gitcli.service;
+package com.francescodisalesgithub.gitcli.service;
 
-import com.francescodisalesdev.gitcli.utility.SystemMessages;
+import com.francescodisalesgithub.gitcli.utility.SystemMessages;
 
 import java.io.File;
 import java.io.IOException;

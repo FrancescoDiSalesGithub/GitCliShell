@@ -1,4 +1,4 @@
-package com.francescodisalesdev.gitcli.utility;
+package com.francescodisalesgithub.gitcli.utility;
 
 import org.jsoup.nodes.Element;
 
