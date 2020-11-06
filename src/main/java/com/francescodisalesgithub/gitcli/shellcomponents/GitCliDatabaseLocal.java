@@ -60,7 +60,7 @@ public class GitCliDatabaseLocal
         }
     }
 
-    @ShellMethod("loads the local database")
+    @ShellMethod("search for an author in the database")
     public void searchAuthor(String author,String path)
     {
         try
@@ -75,7 +75,7 @@ public class GitCliDatabaseLocal
         }
     }
 
-    @ShellMethod("gets repository by author")
+    @ShellMethod("gets a list of repositories given an author's namehe")
     public void searchRepositoryAuthor(String author,String path)
     {
         try
