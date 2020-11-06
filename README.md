@@ -27,13 +27,18 @@ GitCli has the following commands:
  - search-user: search for a specific user
  - navigate: checks a path in the repository
  - check-file: shows the content of a file in the repository
+ - create-database: creates the local database
+ - insert-author: insert the name of the author
+ - assign-repository: assign a repository to an author
+ - search-autor: search for an author in the database
+ - search-repository-author: gets a list of repositories given an author's name
  
  Below you can see some examples on how to use these commands.
  
  **clone**
  
  ``` 
- clone GitCli FrancescoDiSalesDEV /home/myuser/newgitcli test
+ clone GitCli FrancescoDiSalesGithub /home/myuser/newgitcli test
  
  ```
  If the branch argument is omitted then the project will be cloned from the master branch
@@ -41,7 +46,7 @@ GitCli has the following commands:
  **info-branch**
  
  ``` 
- info-branch GitCli FrancescoDiSalesDEV 
+ info-branch GitCli FrancescoDiSalesGithub 
  
  ```
   
@@ -50,7 +55,7 @@ GitCli has the following commands:
  If you want to know the content of the files and folder in a specific branch do:
  
  ``` 
- info-repository GitCliShell FrancescoDiSalesDev test
+ info-repository GitCliShell FrancescoDiSalesGithub test
  
  ```
  Otherwise like the clone command omitt the branch argument
@@ -58,7 +63,7 @@ GitCli has the following commands:
  **info-user**
  
  ``` 
- info-user FrancescoDiSalesDEV
+ info-user FrancescoDiSalesGithub
  
  ```
  
@@ -95,13 +100,48 @@ search-user johndoe 2
  Supposing you have already checked the main page of the repository with the info command and you want to check a folder
    
    ``` 
-navigate FrancescoDiSalesDEV/GitCliShell/tree/master/.github
+navigate FrancescoDiSalesGithub/GitCliShell/tree/master/.github
  
  ```
  
  **check-file**
  
 ``` 
-check-file /FrancescoDiSalesDEV/GitCliShell/blob/master/LICENSE
+check-file /FrancescoDiSalesGithub/GitCliShell/blob/master/LICENSE
+ 
+ ```
+ 
+ **create-database**
+  
+``` 
+create-database mylocaldb /home/myusername/mygitdb/
+ 
+ ```
+ 
+ **insert-author**
+  
+``` 
+insert-author FrancescoDiSalesGithub /home/myusername/mygitdb/mylocaldb.db
+ 
+ ```
+ 
+ **search-author**
+  
+``` 
+search-author FrancescoDiSalesGithub /home/myusername/mygitdb/mylocaldb.db
+ 
+ ```
+
+ **assign-repository**
+  
+``` 
+assign-repository FrancescoDiSalesGithub GitCliShell https://github.com/FrancescoDiSalesGithub/GitCliShell  /home/myusername/mygitdb/mylocaldb.db
+ 
+ ```
+ 
+ **search-repository-author**
+  
+``` 
+search-repository-author FrancescoDiSalesGithub /home/myusername/mygitdb/mylocaldb.db
  
  ```
