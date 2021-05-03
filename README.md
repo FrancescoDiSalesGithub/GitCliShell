@@ -3,6 +3,7 @@
 Navigate the github site using the terminal emulator.
 
 ## How to build
+
 execute this command in your terminal:
  ``` 
 mvn package -Dmaven.test.skip=true
